@@ -90,14 +90,13 @@ export const siteData = {
     },
   ],
 
-  // Video Portfolio
-  // Add your video URLs (YouTube, Vimeo, or direct links)
+  // Video Gallery
   videos: [
     {
       id: 1,
       title: "Фильм 3 этапа lite drift",
       category: "Дрифт",
-      url: "/video/lite drift 3 sz.mp4", // Замените на YouTube ссылку
+      url: "https://www.youtube.com/watch?v=3kXfpYgYOkI", // Замените на реальную YouTube ссылку
       thumbnail: "/drift/d1.jpg",
       description: "Видео с соревнований",
     },

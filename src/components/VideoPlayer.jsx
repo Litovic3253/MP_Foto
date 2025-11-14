@@ -7,10 +7,14 @@ const VideoPlayer = ({ video, onClose }) => {
   const getEmbedUrl = (url) => {
     // YouTube
     if (url.includes("youtube.com") || url.includes("youtu.be")) {
-      const videoId = url.includes("youtu.be")
-        ? url.split("youtu.be/")[1]
-        : url.split("v=")[1]?.split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      // Handle different YouTube URL formats
+      let videoId = "";
+      if (url.includes("youtube.com/watch?v=")) {
+        videoId = url.split("v=")[1]?.split("&")[0];
+      } else if (url.includes("youtu.be/")) {
+        videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      }
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
     // Vimeo
     if (url.includes("vimeo.com")) {
@@ -21,9 +25,11 @@ const VideoPlayer = ({ video, onClose }) => {
     return url;
   };
 
+  // Check if it's a direct video file (local or external)
   const isDirectVideo =
-    (!video.url.includes("youtube") && !video.url.includes("vimeo")) ||
-    video.url.startsWith("/");
+    !video.url.includes("youtube.com") &&
+    !video.url.includes("youtu.be") &&
+    !video.url.includes("vimeo.com");
 
   return (
     <AnimatePresence>
@@ -34,7 +40,11 @@ const VideoPlayer = ({ video, onClose }) => {
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
-        <button className="video-close" onClick={onClose}>
+        <button
+          className="video-close"
+          onClick={onClose}
+          aria-label="Закрыть видео"
+        >
           <FaTimes />
         </button>
 
