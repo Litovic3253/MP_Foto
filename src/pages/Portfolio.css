@@ -69,8 +69,8 @@
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки для вертикальных фото */
+  gap: 1.5rem;
   grid-auto-flow: dense;
 }
 
@@ -81,16 +81,16 @@
   cursor: pointer;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 400px;
+  height: 300px; /* Одинаковая высота для всех фото */
 }
 
 .gallery-item.landscape {
-  grid-column: span 2;
-  height: 300px;
+  grid-column: span 2; /* Горизонтальные фото занимают 2 колонки */
+  height: 300px; /* Та же высота, что и у вертикальных */
 }
 
 .gallery-item.portrait {
-  height: 450px;
+  height: 300px; /* Вертикальные фото */
 }
 
 .gallery-item:hover {
@@ -145,14 +145,27 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gallery-item {
+    height: 280px;
+  }
+}
+
 @media (max-width: 1024px) {
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на планшетах */
   }
 
   .gallery-item.landscape {
-    grid-column: span 1;
-    height: 350px;
+    grid-column: span 2;
+  }
+
+  .gallery-item {
+    height: 260px;
   }
 
   .page-title {
@@ -187,7 +200,15 @@
   }
 
   .gallery-grid {
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на мобильных */
+  }
+
+  .gallery-item.landscape {
+    grid-column: span 2; /* Горизонтальные фото на всю ширину на мобильных */
+  }
+
+  .gallery-item {
+    height: 250px;
   }
 }
 
@@ -205,7 +226,7 @@
   .gallery-item.landscape,
   .gallery-item.portrait {
     grid-column: span 1;
-    height: 350px;
+    height: 300px;
   }
 
   .filter-buttons {

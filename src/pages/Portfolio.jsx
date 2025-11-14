@@ -7,7 +7,7 @@ import "./Portfolio.css";
 // Функция для оптимизации изображений
 const optimizeImage = (src, width = 800) => {
   // Для локальных изображений добавляем параметры оптимизации
-  if (src.startsWith('/')) {
+  if (src.startsWith("/")) {
     // В продакшене можно использовать сервисы оптимизации
     // Пока просто возвращаем исходный путь
     return src;
@@ -95,7 +95,11 @@ const Portfolio = () => {
                 layout
                 onClick={() => setSelectedImage(index)}
               >
-                <img src={optimizeImage(item.image)} alt={item.title} loading="lazy" />
+                <img
+                  src={optimizeImage(item.image)}
+                  alt={item.title}
+                  loading="lazy"
+                />
                 <div className="gallery-overlay">
                   <h3>{item.title}</h3>
                   <p>{item.category}</p>
