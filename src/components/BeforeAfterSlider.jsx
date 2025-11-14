@@ -59,7 +59,12 @@ const BeforeAfterSlider = ({
             className="before-image-wrapper"
             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
           >
-            <img src={before} alt="Before" className="before-image" loading="lazy" />
+            <img
+              src={before}
+              alt="Before"
+              className="before-image"
+              loading="lazy"
+            />
           </div>
         </div>
 

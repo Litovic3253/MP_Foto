@@ -8,6 +8,7 @@ A stunning, modern, and fully responsive photography portfolio built with React 
 - **Fully Responsive** - Mobile, tablet, and desktop optimized
 - **Interactive Portfolio Gallery** - Category filtering and lightbox viewer
 - **Before/After Slider** - Interactive comparison tool for edited photos
+- **Video Gallery** - Showcase your videos with YouTube/Vimeo integration
 - **Smooth Animations** - Powered by Framer Motion
 - **Easy to Customize** - Single data file for all content
 - **SEO Optimized** - Proper meta tags and semantic HTML
@@ -198,14 +199,21 @@ To add portfolio categories, just use new category names:
    - Lightbox image viewer
    - Hover effects
 
-3. **Before/After** (`/before-after`)
+3. **Videos** (`/videos`)
+
+   - Video gallery with thumbnails
+   - YouTube/Vimeo integration
+   - Play videos in modal player
+   - Category filtering
+
+4. **Before/After** (`/before-after`)
 
    - Interactive sliders
    - Drag to compare
    - Mobile-friendly
    - Edit descriptions
 
-4. **Contact** (`/contact`)
+5. **Contact** (`/contact`)
    - Contact form
    - Contact information
    - Social media links
@@ -220,6 +228,33 @@ To add portfolio categories, just use new category names:
 - **Before/After**: Same dimensions for both images
 - **Format**: JPG (optimized) or WebP
 - **File size**: Under 500KB per image
+
+### Video Recommendations:
+
+- **Use YouTube or Vimeo** for hosting videos (better performance)
+- **Video thumbnails**: 400x225px or 16:9 aspect ratio
+- **Video descriptions**: Keep them concise and engaging
+- **Categories**: Organize videos by event type or style
+
+### Adding Videos:
+
+1. Upload your video to YouTube or Vimeo
+2. Copy the video URL
+3. Add to `src/data.js`:
+
+```javascript
+videos: [
+  {
+    id: 1,
+    title: "Your Video Title",
+    category: "Wedding", // Event type
+    url: "https://youtube.com/watch?v=VIDEO_ID",
+    thumbnail: "URL_TO_THUMBNAIL_IMAGE",
+    description: "Video description",
+  },
+  // Add more videos...
+];
+```
 
 ### Content Tips:
 
@@ -240,7 +275,7 @@ Currently using:
 
 To change fonts, edit in `src/index.css`:
 
-```css
+```
 @import url("https://fonts.googleapis.com/css2?family=YourFont&display=swap");
 ```
 

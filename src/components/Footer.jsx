@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h4 className="footer-subtitle">Крч я тута епт</h4>
+            <h4 className="footer-subtitle">Я тут</h4>
             <div className="social-links">
               <a
                 href={social.instagram}
