@@ -5,7 +5,7 @@
 .before-after-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
@@ -15,17 +15,17 @@
 }
 
 .before-after-container.vertical {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 66.67%; /* 3:2 aspect ratio */
+  padding-top: 56.25%; /* 16:9 для горизонтальных */
 }
 
 .image-container.vertical {
-  padding-top: 133.33%; /* 3:4 aspect ratio для вертикальных */
+  padding-top: 150%; /* 2:3 для вертикальных (полная высота) */
 }
 
 .after-image,
@@ -141,6 +141,18 @@
 }
 
 @media (max-width: 768px) {
+  .before-after-container {
+    max-width: 100%;
+  }
+
+  .before-after-container.vertical {
+    max-width: 100%;
+  }
+
+  .image-container.vertical {
+    padding-top: 133.33%; /* Немного меньше на мобильных */
+  }
+
   .slider-button {
     width: 40px;
     height: 40px;

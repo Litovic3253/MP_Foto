@@ -104,8 +104,8 @@ export const siteData = {
   ],
 
   // Before/After Images
-  // For best results, use images with same dimensions
-  // orientation: 'horizontal' или 'vertical'
+  // Для горизонтальных фото: orientation: "horizontal" (16:9)
+  // Для вертикальных фото: orientation: "vertical" (2:3, полная высота)
   beforeAfter: [
     {
       id: 1,
@@ -113,7 +113,7 @@ export const siteData = {
       description: "Ретушь кожи и цветокоррекция",
       before: "/public/street/d1.png",
       after: "/public/street/d2.png",
-      orientation: "horizontal", // или "vertical"
+      orientation: "vertical", // horizontal (16:9) или vertical (2:3)
     },
   ],
 
