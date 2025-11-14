@@ -1,6 +1,17 @@
 import { useState, useRef } from "react";
 import "./BeforeAfterSlider.css";
 
+// Функция для оптимизации изображений
+const optimizeImage = (src, width = 800) => {
+  // Для локальных изображений добавляем параметры оптимизации
+  if (src.startsWith("/")) {
+    // В продакшене можно использовать сервисы оптимизации
+    // Пока просто возвращаем исходный путь
+    return src;
+  }
+  return src;
+};
+
 const BeforeAfterSlider = ({
   before,
   after,
@@ -54,13 +65,18 @@ const BeforeAfterSlider = ({
         onTouchMove={handleTouchMove}
       >
         <div className={`image-container ${orientation}`}>
-          <img src={after} alt="After" className="after-image" loading="lazy" />
+          <img
+            src={optimizeImage(after)}
+            alt="After"
+            className="after-image"
+            loading="lazy"
+          />
           <div
             className="before-image-wrapper"
             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
           >
             <img
-              src={before}
+              src={optimizeImage(before)}
               alt="Before"
               className="before-image"
               loading="lazy"

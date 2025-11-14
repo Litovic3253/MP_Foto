@@ -1,50 +1,55 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaCamera, FaAward, FaHeart } from "react-icons/fa";
-import { siteData } from "../data";
+import { FaArrowRight } from "react-icons/fa";
 import "./Home.css";
 
-const Home = () => {
-  const { hero, photographer, portfolio } = siteData;
+// Функция для оптимизации изображений
+const optimizeImage = (src, width = 800) => {
+  // Для локальных изображений добавляем параметры оптимизации
+  if (src.startsWith("/")) {
+    // В продакшене можно использовать сервисы оптимизации
+    // Пока просто возвращаем исходный путь
+    return src;
+  }
+  return src;
+};
 
-  const features = [
-    {
-      icon: <FaCamera />,
-      title: "Professional Equipment",
-      text: "Using top-tier photography gear",
-    },
-    {
-      icon: <FaAward />,
-      title: "Award-Winning",
-      text: "Recognized excellence in photography",
-    },
-    {
-      icon: <FaHeart />,
-      title: "Passion & Dedication",
-      text: "Every shoot is a work of art",
-    },
-  ];
+const Home = () => {
+  const { photographer, portfolio } = siteData;
 
   return (
-    <div className="home">
+    <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-overlay"></div>
-        <img src={hero.image} alt="Hero" className="hero-image" />
-
-        <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="hero-title">{hero.title}</h1>
-          <h2 className="hero-subtitle">{hero.subtitle}</h2>
-          <p className="hero-description">{hero.description}</p>
-          <Link to="/portfolio" className="hero-button">
-            Просмотр портфолио <FaArrowRight />
-          </Link>
-        </motion.div>
+      <section className="hero-section">
+        <div className="hero-content">
+          <motion.div
+            className="hero-text"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="hero-title">{photographer.title}</h1>
+            <h2 className="hero-subtitle">{photographer.name}</h2>
+            <p className="hero-description">{photographer.description}</p>
+            <div className="hero-cta">
+              <Link to="/portfolio" className="cta-button primary">
+                Просмотреть портфолио
+              </Link>
+              <Link to="/contact" className="cta-button secondary">
+                Связаться
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        <div className="hero-image">
+          <motion.img
+            src={optimizeImage(photographer.heroImage)}
+            alt={photographer.name}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+          />
+        </div>
       </section>
 
       {/* About Section */}
@@ -72,7 +77,11 @@ const Home = () => {
               </Link>
             </div>
             <div className="about-image">
-              <img src={portfolio[0].image} alt="About" loading="lazy" />
+              <img
+                src={optimizeImage(portfolio[0].image)}
+                alt="About"
+                loading="lazy"
+              />
             </div>
           </motion.div>
         </div>
@@ -92,7 +101,11 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <img src={item.image} alt={item.title} loading="lazy" />
+                <img
+                  src={optimizeImage(item.image)}
+                  alt={item.title}
+                  loading="lazy"
+                />
                 <div className="preview-overlay">
                   <h3>{item.title}</h3>
                   <p>{item.category}</p>
