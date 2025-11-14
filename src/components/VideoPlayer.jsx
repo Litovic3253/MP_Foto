@@ -22,7 +22,8 @@ const VideoPlayer = ({ video, onClose }) => {
   };
 
   const isDirectVideo =
-    !video.url.includes("youtube") && !video.url.includes("vimeo");
+    (!video.url.includes("youtube") && !video.url.includes("vimeo")) ||
+    video.url.startsWith("/");
 
   return (
     <AnimatePresence>

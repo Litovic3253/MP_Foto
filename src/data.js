@@ -97,7 +97,7 @@ export const siteData = {
       id: 1,
       title: "Фильм 3 этапа lite drift",
       category: "Дрифт",
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Замените на YouTube ссылку
+      url: "/video/lite drift 3 sz.mp4", // Замените на YouTube ссылку
       thumbnail: "/drift/d1.jpg",
       description: "Видео с соревнований",
     },

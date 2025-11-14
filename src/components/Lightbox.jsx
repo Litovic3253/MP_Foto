@@ -124,6 +124,7 @@ const Lightbox = ({ images, currentIndex, onClose }) => {
             src={images[index].image}
             alt={images[index].title}
             className="lightbox-image"
+            loading="lazy"
           />
           <div className="lightbox-info">
             <h3>{images[index].title}</h3>

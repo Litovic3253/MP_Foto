@@ -54,12 +54,12 @@ const BeforeAfterSlider = ({
         onTouchMove={handleTouchMove}
       >
         <div className={`image-container ${orientation}`}>
-          <img src={after} alt="After" className="after-image" />
+          <img src={after} alt="After" className="after-image" loading="lazy" />
           <div
             className="before-image-wrapper"
             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
           >
-            <img src={before} alt="Before" className="before-image" />
+            <img src={before} alt="Before" className="before-image" loading="lazy" />
           </div>
         </div>
 

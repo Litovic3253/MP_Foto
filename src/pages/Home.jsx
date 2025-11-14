@@ -72,7 +72,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="about-image">
-              <img src={portfolio[0].image} alt="About" />
+              <img src={portfolio[0].image} alt="About" loading="lazy" />
             </div>
           </motion.div>
         </div>
@@ -92,7 +92,7 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <img src={item.image} alt={item.title} />
+                <img src={item.image} alt={item.title} loading="lazy" />
                 <div className="preview-overlay">
                   <h3>{item.title}</h3>
                   <p>{item.category}</p>

@@ -64,7 +64,7 @@ const Videos = () => {
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="video-thumbnail">
-                  <img src={video.thumbnail} alt={video.title} />
+                  <img src={video.thumbnail} alt={video.title} loading="lazy" />
                   <div className="play-overlay">
                     <div className="play-button">
                       <FaPlay />
