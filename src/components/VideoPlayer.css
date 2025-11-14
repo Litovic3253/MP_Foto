@@ -1,0 +1,110 @@
+.video-player-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.video-close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+}
+
+.video-close:hover {
+  background: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.video-player-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-iframe,
+.video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+.video-element {
+  object-fit: contain;
+}
+
+.video-info {
+  text-align: center;
+  color: var(--secondary-color);
+  padding: 0 1rem;
+}
+
+.video-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.video-info p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .video-player-overlay {
+    padding: 1rem;
+  }
+
+  .video-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .video-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .video-info p {
+    font-size: 0.95rem;
+  }
+}
