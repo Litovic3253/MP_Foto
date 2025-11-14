@@ -22,31 +22,15 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
-  // Simple toggle function
+  // Простая функция переключения меню
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isOpen && !e.target.closest('.mobile-menu') && !e.target.closest('.menu-toggle')) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('click', handleClickOutside);
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+  // Закрытие меню при клике вне его области
+  const handleOutsideClick = () => {
+    setIsOpen(false);
+  };
 
   const navLinks = [
     { name: "Главная", path: "/" },
@@ -88,7 +72,7 @@ const Navbar = () => {
             <button
               className="menu-toggle"
               onClick={toggleMenu}
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={isOpen}
             >
               {isOpen ? <FaTimes /> : <FaBars />}
@@ -97,56 +81,42 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu - Simplified version */}
-      <AnimatePresence>
-        {isOpen && (
-          <div className="mobile-menu-wrapper">
-            <motion.div
-              className="mobile-menu-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              className="mobile-menu"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            >
-              <div className="mobile-menu-header">
-                <div className="logo">
-                  <span className="logo-text">MP</span>
-                  <span className="logo-subtitle">Фотограф</span>
-                </div>
-                <button
-                  className="mobile-menu-close"
-                  onClick={() => setIsOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <FaTimes />
-                </button>
+      {/* Мобильное меню - максимально простая реализация */}
+      {isOpen && (
+        <div className="mobile-menu-simple">
+          <div className="mobile-menu-overlay" onClick={handleOutsideClick} />
+          <div className="mobile-menu-content">
+            <div className="mobile-menu-header">
+              <div className="logo">
+                <span className="logo-text">MP</span>
+                <span className="logo-subtitle">Фотограф</span>
               </div>
+              <button
+                className="mobile-menu-close"
+                onClick={handleOutsideClick}
+                aria-label="Закрыть меню"
+              >
+                <FaTimes />
+              </button>
+            </div>
 
-              <div className="mobile-menu-links">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`mobile-nav-link ${
-                      location.pathname === link.path ? "active" : ""
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
+            <div className="mobile-menu-links">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`mobile-nav-link ${
+                    location.pathname === link.path ? "active" : ""
+                  }`}
+                  onClick={handleOutsideClick}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </>
   );
 };
