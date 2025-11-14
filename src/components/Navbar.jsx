@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -7,6 +7,9 @@ import "./Navbar.css";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
+  const navRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,6 +42,41 @@ const Navbar = () => {
 
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
+
+  // Handle swipe to open menu
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+    setIsSwiping(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isSwiping) return;
+    
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    
+    // Swipe from left edge to open menu
+    if (diff > 50 && startX < 50 && !isOpen) {
+      setIsOpen(true);
+      setIsSwiping(false);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsSwiping(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
+    
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [startX, isSwiping, isOpen]);
 
   const navLinks = [
     { name: "Главная", path: "/" },
