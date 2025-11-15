@@ -100,58 +100,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="features-section">
-        <div className="container">
-          <div className="features-grid">
-            <motion.div
-              className="feature-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="feature-icon">📸</div>
-              <h3 className="feature-title">Портретная съемка</h3>
-              <p className="feature-text">
-                Создаю выразительные портреты, раскрывающие характер и
-                индивидуальность каждого клиента.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="feature-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="feature-icon">💍</div>
-              <h3 className="feature-title">Свадебная съемка</h3>
-              <p className="feature-text">
-                Запечатлеваю самые важные моменты вашего особенного дня с
-                любовью и вниманием к деталям.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="feature-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="feature-icon">🎨</div>
-              <h3 className="feature-title">Ретушь</h3>
-              <p className="feature-text">
-                Профессиональная ретушь и постобработка для идеального
-                результата.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Preview Gallery */}
       <section className="preview-section">
         <div className="container">
