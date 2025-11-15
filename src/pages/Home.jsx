@@ -16,7 +16,7 @@ const optimizeImage = (src, width = 800) => {
 };
 
 const Home = () => {
-  const { photographer, portfolio } = siteData;
+  const { photographer, portfolio, hero } = siteData;
 
   return (
     <div className="home-page">
@@ -29,9 +29,9 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="hero-title">{photographer.title}</h1>
-            <h2 className="hero-subtitle">{photographer.name}</h2>
-            <p className="hero-description">{photographer.bio}</p>
+            <h1 className="hero-title">{hero.title}</h1>
+            <h2 className="hero-subtitle">{hero.subtitle}</h2>
+            <p className="hero-description">{hero.description}</p>
             <div className="hero-cta">
               <Link to="/portfolio" className="cta-button primary">
                 Просмотреть портфолио
@@ -44,8 +44,8 @@ const Home = () => {
         </div>
         <div className="hero-image">
           <motion.img
-            src={optimizeImage(photographer.heroImage)}
-            alt={photographer.name}
+            src={optimizeImage(hero.image)}
+            alt={hero.title}
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
