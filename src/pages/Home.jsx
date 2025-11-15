@@ -19,37 +19,49 @@ const Home = () => {
   const { photographer, portfolio, hero } = siteData;
 
   return (
-    <div className="home-page">
+    <div className="home">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero">
+        <img
+          src={optimizeImage(hero.image)}
+          alt={hero.title}
+          className="hero-image"
+        />
+        <div className="hero-overlay"></div>
         <div className="hero-content">
-          <motion.div
-            className="hero-text"
+          <motion.h1
+            className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="hero-title">{hero.title}</h1>
-            <h2 className="hero-subtitle">{hero.subtitle}</h2>
-            <p className="hero-description">{hero.description}</p>
-            <div className="hero-cta">
-              <Link to="/portfolio" className="cta-button primary">
-                Просмотреть портфолио
-              </Link>
-              <Link to="/contact" className="cta-button secondary">
-                Связаться
-              </Link>
-            </div>
+            {hero.title}
+          </motion.h1>
+          <motion.h2
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {hero.subtitle}
+          </motion.h2>
+          <motion.p
+            className="hero-description"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {hero.description}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Link to="/portfolio" className="hero-button">
+              Просмотреть портфолио <FaArrowRight />
+            </Link>
           </motion.div>
-        </div>
-        <div className="hero-image">
-          <motion.img
-            src={optimizeImage(hero.image)}
-            alt={hero.title}
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1 }}
-          />
         </div>
       </section>
 
@@ -85,6 +97,58 @@ const Home = () => {
               />
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="container">
+          <div className="features-grid">
+            <motion.div
+              className="feature-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="feature-icon">📸</div>
+              <h3 className="feature-title">Портретная съемка</h3>
+              <p className="feature-text">
+                Создаю выразительные портреты, раскрывающие характер и
+                индивидуальность каждого клиента.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="feature-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="feature-icon">💍</div>
+              <h3 className="feature-title">Свадебная съемка</h3>
+              <p className="feature-text">
+                Запечатлеваю самые важные моменты вашего особенного дня с
+                любовью и вниманием к деталям.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="feature-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="feature-icon">🎨</div>
+              <h3 className="feature-title">Ретушь</h3>
+              <p className="feature-text">
+                Профессиональная ретушь и постобработка для идеального
+                результата.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
