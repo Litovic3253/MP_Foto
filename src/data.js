@@ -12,7 +12,7 @@ export const siteData = {
     bio: "Запечатлевая моменты, которые будут длиться вечно.",
     email: "mpavlukevic@gmail.com",
     phone: "+7 (919) 896-28-18",
-    heroImage: "/back.jpg",
+    heroImage: "/MP_Foto/back.jpg",
   },
 
   // Social Media Links
