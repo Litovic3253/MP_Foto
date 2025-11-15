@@ -31,7 +31,7 @@ const Home = () => {
           >
             <h1 className="hero-title">{photographer.title}</h1>
             <h2 className="hero-subtitle">{photographer.name}</h2>
-            <p className="hero-description">{photographer.description}</p>
+            <p className="hero-description">{photographer.bio}</p>
             <div className="hero-cta">
               <Link to="/portfolio" className="cta-button primary">
                 Просмотреть портфолио
